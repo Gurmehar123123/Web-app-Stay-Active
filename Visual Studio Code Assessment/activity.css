@@ -1,0 +1,195 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    position: relative; /* Ensure the body is positioned relative */
+    padding-top: 70px; /* Account for the height of the header */
+    overflow: hidden; /* Hide overflow to ensure full coverage */
+}
+
+/* Rainbow background effect for the entire screen */
+.rainbow-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF4500, #FF6347, #FF8C00, #FFD700, #FFA07A, #F08080, #FA8072, #FFB6C1);
+    background-size: 300% 300%;
+    animation: rainbow 10s ease infinite;
+    z-index: -1; /* Ensure the background is behind all other content */
+}
+
+/* Button styles */
+button {
+    width: 200px; /* Width of the button */
+    height: 150px; /* Height of the button */
+    font-size: 18px;
+    background-color: #FFA500; /* Light orange background */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    position: relative; /* For positioning the pseudo-element */
+    overflow: hidden; /* To hide the rainbow effect outside the button */
+    transition: background-color 0.3s; /* Smooth transition for color change */
+}
+
+/* Rainbow effect on hover for buttons */
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF4500, #FF6347, #FF8C00, #FFD700, #FFA07A, #F08080, #FA8072, #FFB6C1);
+    background-size: 300% 300%;
+    animation: rainbow 10s ease infinite;
+    z-index: 0; /* Ensure it is behind the text */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s; /* Smooth transition for the effect */
+}
+
+button:hover::before {
+    opacity: 1; /* Show the rainbow effect on hover */
+}
+
+button span {
+    position: relative; /* Ensure text is above the pseudo-element */
+    z-index: 1; /* Bring text above the rainbow effect */
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px; /* Increased padding */
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 70px; 
+}
+
+/* Logo styles */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px; 
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Navigation link styles */
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: gray;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: black;
+}
+
+/* Main section styles */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 70px); /* Adjust height to account for the header */
+    padding-top: 20px; /* Additional padding if needed */
+}
+
+/* Activity buttons grid styles */
+.activity-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-template-rows: repeat(2, auto); /* Two rows with automatic height */
+    gap: 20px; /* Gap between grid items */
+    justify-content: center; /* Align buttons to the center */
+}
+
+/* Go Back button styles */
+#goBackButton {
+    position: fixed; /* Fixed positioning to stay at the bottom left corner */
+    bottom: 60px; /* Adjusted to be 60px from the bottom of the viewport */
+    left: 20px; /* 20px from the left of the viewport */
+    width: 200px; /* Width matching other buttons */
+    height: 50px; /* Height matching other buttons */
+    font-size: 18px;
+    background-color: #FFA500; /* Light orange background */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    position: relative; /* For positioning the pseudo-element */
+    overflow: hidden; /* To hide the rainbow effect outside the button */
+    transition: background-color 0.3s; /* Smooth transition for color change */
+}
+
+#goBackButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF4500, #FF6347, #FF8C00, #FFD700, #FFA07A, #F08080, #FA8072, #FFB6C1);
+    background-size: 300% 300%;
+    animation: rainbow 10s ease infinite;
+    z-index: 0; /* Ensure it is behind the text */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s; /* Smooth transition for the effect */
+}
+
+#goBackButton:hover::before {
+    opacity: 1; /* Show the rainbow effect on hover */
+}
+
+/* Positioning images in the corners */
+.corner-image {
+    position: fixed; /* Use fixed positioning to keep images in corners relative to the viewport */
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+}
+
+.top-left {
+    top: 70px; /* Position below the header */
+    left: 0;
+}
+
+.top-right {
+    top: 70px; /* Position below the header */
+    right: 0;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+/* Keyframes for rainbow animation */
+@keyframes rainbow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}

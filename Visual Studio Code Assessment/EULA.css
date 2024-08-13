@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #FF4500, #FF6347, #FF8C00, #FFD700, #FFA07A, #F08080, #FA8072, #FFB6C1);
+    background-size: 300% 300%;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    animation: rainbow 10s ease infinite;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.eula-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-top: 100px; /* Ensures content doesn't overlap with header */
+    flex: 1;
+}
+
+.content {
+    text-align: center;
+    color: white;
+    z-index: 1; /* Ensure the text is above the background animation */
+}
+
+.content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #d6820e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1; /* Ensure the button is above other elements */
+    transition: background-color 0.3s;
+    overflow: hidden; /* To hide the rainbow effect outside the button */
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF4500, #FF6347, #FF8C00, #FFD700, #FFA07A, #F08080, #FA8072, #FFB6C1);
+    background-size: 300% 300%;
+    animation: rainbow 10s ease infinite;
+    z-index: 0; /* Ensure it is behind the text */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s;
+}
+
+button:hover::before {
+    opacity: 1; /* Show the rainbow effect on hover */
+}
+
+#goBack {
+    position: fixed;
+    bottom: 20px; /* Position 20px from the bottom */
+    left: 20px;   /* Position 20px from the left */
+    z-index: 1;   /* Ensure it stays on top */
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+#eulaLink {
+    color: gray;
+    text-decoration: none;
+}
+
+#eulaLink:hover {
+    color: black;
+}
+
+#eulaModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

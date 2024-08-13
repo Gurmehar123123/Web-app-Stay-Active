@@ -1,0 +1,277 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    overflow: hidden; /* Hide overflow to ensure full coverage */
+    position: relative; /* Ensure the body is positioned relative */
+}
+
+/* Rainbow background effect */
+.rainbow-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF4500, #FF6347, #FF8C00, #FFD700, #FFA07A, #F08080, #FA8072, #FFB6C1);
+    background-size: 300% 300%;
+    animation: rainbow 10s ease infinite;
+    z-index: -2; /* Ensure the background is behind the GIF and content */
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 70px;
+    z-index: 1; /* Ensure header is above the GIF */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-text {
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px; /* Add space between Main Menu and Home */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav li {
+    margin: 0 10px; /* Adjust spacing between the list items */
+}
+
+nav a {
+    color: grey; /* Change color to grey */
+    text-decoration: none;
+    font-size: 1.2em; /* Increase font size */
+    margin-left: 10px;
+}
+
+nav a:hover {
+    color: black; /* Darker color on hover */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+main {
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 70px);
+    z-index: 2; /* Ensure main content is above the GIF */
+}
+
+/* Timer and button container */
+.timer-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column; /* Ensure proper layout on smaller screens */
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px;
+    position: relative; /* For positioning the pseudo-element */
+    overflow: hidden; /* To hide the rainbow effect outside the button */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for color change and transformation */
+    z-index: 3; /* Ensure buttons are above the GIF */
+}
+
+/* Button color for normal state */
+button {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+}
+
+/* Button hover color */
+button:hover {
+    background-color: rgba(255, 255, 255, 0.4); /* Slightly more transparent background */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Rainbow effect on hover */
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF4500, #FF6347, #FF8C00, #FFD700, #FFA07A, #F08080, #FA8072, #FFB6C1);
+    background-size: 300% 300%;
+    animation: rainbow 10s ease infinite;
+    z-index: 0; /* Ensure it is behind the text */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s; /* Smooth transition for the effect */
+}
+
+button:hover::before {
+    opacity: 1; /* Show the rainbow effect on hover */
+}
+
+button span {
+    position: relative; /* Ensure text is above the pseudo-element */
+    z-index: 1; /* Bring text above the rainbow effect */
+}
+
+/* Specific button styles */
+.go-back {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 20px;
+    z-index: 3; /* Ensure go-back button is above the GIF */
+}
+
+.go-back::before {
+    content: "←";
+    margin-right: 5px;
+}
+
+.activity {
+    margin-left: auto;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    z-index: 3; /* Ensure activity button is above the GIF */
+}
+
+.activity::before {
+    content: "🏃";
+    margin-right: 5px;
+}
+
+/* GIF styling */
+.gif-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 450px; /* Increase width to make the GIF bigger */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px;
+    animation: moveLeftToRight 10s linear infinite; /* Apply the animation */
+    z-index: -1; /* Ensure GIF is behind the buttons but above the rainbow background */
+}
+
+.gif-container img {
+    width: 100%; /* Ensure the GIF fills the container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Keyframes for moving the GIF from left to right */
+@keyframes moveLeftToRight {
+    0% {
+        transform: translateX(-100%); /* Start position (off-screen to the left) */
+    }
+    100% {
+        transform: translateX(100%); /* End position (off-screen to the right) */
+    }
+}
+
+/* Specific button styles for plus and minus buttons */
+button.timer-button {
+    font-size: 1em; /* Smaller font size for the symbols */
+    width: 50px; /* Adjust width to fit the smaller text */
+    height: 50px; /* Adjust height to fit the smaller text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Stop button styling */
+#stopButton {
+    background-color: red; /* Red background color for stop button */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    padding: 15px 30px; /* Same padding as other buttons */
+    font-size: 1.2em; /* Same font size as other buttons */
+    border-radius: 5px; /* Same border-radius as other buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-left: 10px; /* Add some space between start and stop buttons */
+    z-index: 3; /* Ensure stop button is above the GIF */
+}
+
+#stopButton:hover {
+    background-color: darkred; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Flashing red effect */
+@keyframes flashRed {
+    0% { background-color: transparent; }
+    50% { background-color: red; }
+    100% { background-color: transparent; }
+}
+
+.flash-red {
+    animation: flashRed 1s ease-in-out;
+    background-color: red; /* Ensure background color is red when flashing */
+}
+
+/* Disabled button styling */
+button:disabled {
+    background-color: rgba(255, 255, 255, 0.1); /* Very transparent background */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+    opacity: 0.5; /* Make disabled buttons appear less prominent */
+}
